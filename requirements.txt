@@ -1,0 +1,25 @@
+# ECAS + FrSBe cognitive-behavioural phenotyping in ALS
+# Reproducibility package — pinned/tested with Python 3.12
+#
+# Install with:
+#   pip install -r requirements.txt --break-system-packages   (if needed)
+
+numpy
+pandas
+scipy
+
+# Script 1 (reproduce_analyses.py) and Script 3 (sensitivity_analyses.py):
+# StepMix partition, GMM/k-means sensitivity checks
+stepmix==3.0.0
+scikit-learn
+
+# als_common.load_cohort(): reads the .sav dataset (optional if you only
+# ever use the .csv fallback)
+pyreadstat
+
+# Script 4 (survival_analysis.py): Kaplan-Meier curves and log-rank test
+lifelines
+matplotlib
+
+# Script 5 (build_tables.py): assembles tables_2_3_4.docx
+python-docx

@@ -1,7 +1,6 @@
 # ECAS + FrSBe cognitive-behavioural phenotyping in ALS — Reproducibility package
 
-Manuscript: **"The cognitive–behavioural architecture of amyotrophic lateral sclerosis"**
-(submitted to *Brain*). PARALS registry, University of Turin.
+Manuscript: **"The cognitive–behavioural architecture of amyotrophic lateral sclerosis"**. PARALS registry, University of Turin.
 
 This package contains everything needed to reproduce, from the data, every
 model-based and descriptive number reported in the manuscript's main tables,
@@ -14,19 +13,12 @@ a script that assembles the manuscript tables as a Word document.
 
 | File | What it is |
 |------|-----------|
-| `ALS_ECAS_FrSBe_dataset_reduced.sav` / `.csv` | Analysis dataset. Cohort only (N = 777), **31 variables** — just those used by the scripts. Either format works; `als_common.load_cohort()` tries `.sav` first, then falls back to `.csv`. |
-| `DATA_DICTIONARY.csv` | One row per variable: name, non-missing count, plain-language description. |
 | `als_common.py` | **Shared module** — single source of truth for the 7 clustering-indicator columns and FrSBe sign-reversal rule, the SAV/CSV cohort loader, the standardised clustering-matrix builder, Hungarian label remapping, phenotype names/order/colors, and p-value formatting. Imported by every script below; nothing in this list re-implements these pieces independently. |
 | `reproduce_analyses.py` | **Script 1** — the partition, the BCH weights, and the C9orf72 odds ratios. |
 | `reproduce_behaviural_tables.py` | **Script 2** — Table 2 (ECAS-CI) and Table 3 (FrSBe & BBI, premorbid → post-illness). *(Filename as shipped; note the spelling.)* |
 | `sensitivity_analyses.py` | **Script 3** — reviewer-requested robustness checks: diagonal vs full-covariance model comparison, StepMix vs k-means, missingness on the clustering indicators. |
 | `survival_analysis.py` | **Script 4** — reviewer-requested Kaplan-Meier survival / tracheostomy-free survival by phenotype. **Not reported in the manuscript.** |
 | `build_tables.py` | **Script 5** — reads the `results/*.csv` files produced by Scripts 1–2 and writes `results/tables/tables_2_3_4.docx`, a Word document with Table 2, Table 3, and Table 4 styled to match Table 1 of the manuscript. |
-| `official_posteriors.npy` / `official_mask.npy` | Posterior responsibilities of the final StepMix model (777×4) and the aligning mask, kept in the package for reference. **Not currently loaded by any script** — `reproduce_analyses.py` and `sensitivity_analyses.py` both refit StepMix directly on the standardised matrix (`random_state=42` makes this deterministic) rather than reading these files back in. |
-
-> The full working database has 555 columns; this reduced file keeps only the
-> 31 variables the analyses actually use, to keep the verification unambiguous.
-> No direct identifiers are included.
 
 ---
 
