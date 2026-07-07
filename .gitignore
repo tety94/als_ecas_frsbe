@@ -1,0 +1,9 @@
+.idea/
+*.iml
+venv/
+.venv/
+env/
+
+
+/venv/
+/data/
