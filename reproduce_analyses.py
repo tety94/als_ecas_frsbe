@@ -61,10 +61,6 @@ ensure_dirs(RESULTS_DIR)
 #   Model: StepMix(n_components=4, measurement='continuous',
 #                  n_init=20, random_state=42, max_iter=200)
 #
-#   NOTE: measurement MUST be 'continuous' (NOT 'gaussian_diag'); using
-#   gaussian_diag or the *_PUNTZ columns instead of *_Z_POLETTI does NOT
-#   reproduce the partition (drifts to ARI~0.82). This is the single most
-#   important detail for exact reproduction.
 # =====================================================================
 
 def fit_official_partition(M, official):
