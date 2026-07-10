@@ -1,9 +1,0 @@
-table,measure,Preserved_median,Preserved_Q1,Preserved_Q3,Cognitive_only_median,Cognitive_only_Q1,Cognitive_only_Q3,Behavioural_only_median,Behavioural_only_Q1,Behavioural_only_Q3,Severe_FTD_median,Severe_FTD_Q1,Severe_FTD_Q3,kruskal_p
-ECAS-CI,ECAS-CI total score,0.0,0.0,2.0,0.0,0.0,2.0,3.0,0.0,5.0,3.0,1.0,6.0,5.996477157736292e-18
-ECAS-CI,ECAS-CI domains altered,0.0,0.0,2.0,0.0,0.0,2.0,2.0,0.0,3.0,2.0,1.0,3.0,2.407404111270526e-19
-FrSBe total (T-score),FrSBe premorbid,44.0,38.0,48.75,44.0,39.0,50.0,59.0,53.0,67.0,56.0,50.0,66.5,9.754053562444662e-62
-FrSBe total (T-score),FrSBe post-illness,48.0,42.0,54.75,50.0,44.0,56.0,70.0,64.0,77.5,77.0,67.0,91.5,1.7628690215169485e-108
-FrSBe total (T-score),FrSBe change,3.5,1.0,7.0,4.0,1.0,8.0,9.0,3.0,18.0,17.0,9.0,27.5,5.6331175696059176e-34
-BBI,BBI premorbid,1.0,0.0,3.0,1.0,0.0,4.0,4.0,1.0,11.0,4.5,0.0,11.5,5.727956852157409e-10
-BBI,BBI post-illness,6.0,2.0,10.0,7.0,3.0,13.0,16.0,9.0,21.0,22.5,14.0,31.5,1.0777557996911189e-27
-BBI,BBI change,4.0,0.0,7.0,3.0,0.0,8.25,7.0,2.0,14.25,16.5,6.75,24.0,5.237776436187717e-12

@@ -1,9 +1,0 @@
-phenotype,n,n_events,median_survival_years,endpoint
-Preserved,174,119,3.164383561643836,overall_survival
-Cognitive-only,164,129,2.575342465753425,overall_survival
-Behavioural-only,136,107,3.0,overall_survival
-Severe/FTD,80,64,2.25,overall_survival
-Preserved,174,119,3.164383561643836,tracheostomy_free_survival
-Cognitive-only,164,130,2.5753424657534247,tracheostomy_free_survival
-Behavioural-only,136,107,3.0,tracheostomy_free_survival
-Severe/FTD,80,64,2.25,tracheostomy_free_survival

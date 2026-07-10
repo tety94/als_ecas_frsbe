@@ -2,11 +2,6 @@
 
 Manuscript: **"The cognitive–behavioural architecture of amyotrophic lateral sclerosis"**. PARALS registry, University of Turin.
 
-This package contains everything needed to reproduce, from the data, every
-model-based and descriptive number reported in the manuscript's main tables,
-plus a set of reviewer-requested sensitivity/robustness/survival analyses and
-a script that assembles the manuscript tables as a Word document.
-
 ---
 
 ## Contents
@@ -16,19 +11,8 @@ a script that assembles the manuscript tables as a Word document.
 | `als_common.py` | **Shared module** — single source of truth for the 7 clustering-indicator columns and FrSBe sign-reversal rule, the SAV/CSV cohort loader, the standardised clustering-matrix builder, Hungarian label remapping, phenotype names/order/colors, and p-value formatting. Imported by every script below; nothing in this list re-implements these pieces independently. |
 | `reproduce_analyses.py` | **Script 1** — the partition, the BCH weights, and the C9orf72 odds ratios. |
 | `reproduce_behaviural_tables.py` | **Script 2** — Table 2 (ECAS-CI) and Table 3 (FrSBe & BBI, premorbid → post-illness). *(Filename as shipped; note the spelling.)* |
-| `sensitivity_analyses.py` | **Script 3** — reviewer-requested robustness checks: diagonal vs full-covariance model comparison, StepMix vs k-means, missingness on the clustering indicators. |
 | `survival_analysis.py` | **Script 4** — reviewer-requested Kaplan-Meier survival / tracheostomy-free survival by phenotype. **Not reported in the manuscript.** |
 | `build_tables.py` | **Script 5** — reads the `results/*.csv` files produced by Scripts 1–2 and writes `results/tables/tables_2_3_4.docx`, a Word document with Table 2, Table 3, and Table 4 styled to match Table 1 of the manuscript. |
-
----
-
-## Data source (single source of truth)
-
-`ALS_ECAS_FrSBe_dataset_reduced.sav` or `.csv` — cohort of **N = 777** patients
-(rows with a non-missing official partition `ECASFRSBE_CLASS4`). The official
-4-class partition is stored in `ECASFRSBE_CLASS4` (1 = Preserved, 2 = Cognitive-only,
-3 = Behavioural-only, 4 = Severe/FTD). All loading goes through
-`als_common.load_cohort()`.
 
 ---
 
@@ -41,18 +25,11 @@ pip install stepmix==3.0.0 scikit-learn statsmodels scipy numpy pandas pyreadsta
 python reproduce_analyses.py            # Script 1: partition + BCH + C9orf72 OR
 python reproduce_behaviural_tables.py   # Script 2: Table 2 & Table 3 values
 python sensitivity_analyses.py          # Script 3: robustness checks
-python survival_analysis.py             # Script 4 (optional): survival by phenotype
-python build_tables.py                  # Script 5: assemble tables_2_3_4.docx
+python build_tables.py                  # Script 4: assemble tables_2_3_4.docx
                                          #   (run AFTER Scripts 1 and 2 — it reads
                                          #    their results/*.csv output)
 ```
 
-All scripts read whichever data file is present in the same folder (`.sav`
-preferred, `.csv` as fallback — `pyreadstat` is only needed if you use the
-`.sav`). Fixed seed `random_state = 42` throughout. Python 3.12.
-
-`als_common.py` is a library, not a script — it is imported by all five
-scripts above and is not run directly.
 
 ---
 
@@ -161,26 +138,8 @@ manuscript (included vs eligible) is only a partial proxy for it.
 
 ---
 
-## Script 4 — `survival_analysis.py` (reviewer-requested, not in the manuscript)
 
-Kaplan-Meier overall survival and a tracheostomy-free composite endpoint
-(death OR tracheostomy) by cognitive-behavioural phenotype, plus a
-multivariate log-rank test across the four groups.
-
-Uses `SURVIVAL`, `STATUS`, `TRACHEO_NEW`, columns kept in the reduced dataset
-specifically for this reviewer-facing check. **Limitation flagged by the
-script itself:** the composite endpoint reuses the single `SURVIVAL` time
-column for both event types, because only one time-to-event column is
-available in this reduced extract; if death and tracheostomy do not occur at
-the same follow-up time in the source data, this is an approximation.
-
-**Saves:** `results/figures/km_survival_by_phenotype.png`,
-`results/figures/km_tracheofree_by_phenotype.png`,
-`results/survival_logrank_summary.csv`, `results/survival_median_by_class.csv`.
-
----
-
-## Script 5 — `build_tables.py`
+## Script 4 — `build_tables.py`
 
 Assembles Tables 2, 3, and 4 as a single Word document
 (`results/tables/tables_2_3_4.docx`), styled to match Table 1 of the
@@ -212,9 +171,6 @@ Fixed seed `random_state = 42`.
   pairwise and report the N used for each value.
 - `GENETICA` stores the gene symbol; only C9orf72, SOD1 and TARDBP are used in the
   manuscript, with a blank entry meaning non-carrier / negative screening.
-- Survival columns (`SURVIVAL`, `STATUS`, `TRACHEO_NEW`) are included only for
-  the reviewer-requested `survival_analysis.py`; survival is not reported in
-  the manuscript itself.
 - `als_common.py` is the single source of truth for the 7 clustering
   indicators, the cohort loader, phenotype naming/order/colors, and p-value
   formatting — if any of these ever need to change, change them there, not
