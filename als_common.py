@@ -31,8 +31,8 @@ from scipy.optimize import linear_sum_assignment
 # ---------------------------------------------------------------------
 # Data file locations (single source of truth)
 # ---------------------------------------------------------------------
-SAV = "ALS_ECAS_FrSBe_dataset_reduced.sav"
-CSV = "ALS_ECAS_FrSBe_dataset_reduced.csv"
+SAV = "data/ALS_ECAS_FrSBe_dataset_reduced.sav"
+CSV = "data/ALS_ECAS_FrSBe_dataset_reduced.csv"
 RESULTS_DIR = "results"
 FIG_DIR = os.path.join(RESULTS_DIR, "figures")
 TAB_DIR = os.path.join(RESULTS_DIR, "tables")
