@@ -37,18 +37,3 @@ python build_tables.py                  # Script 4: assemble tables_2_3_4.docx
 Python 3.12; `stepmix==3.0.0`, scikit-learn, statsmodels, scipy, numpy, pandas,
 `pyreadstat` (optional, only needed for the `.sav` path), `lifelines` and
 `matplotlib` (for `survival_analysis.py`), `python-docx` (for `build_tables.py`).
-Fixed seed `random_state = 42`.
-
----
-
-## Notes for the repository
-
-- The BBI, FBI and premorbid FrSBe fields have some missingness by design
-  (not every caregiver completed every instrument); the scripts handle this
-  pairwise and report the N used for each value.
-- `GENETICA` stores the gene symbol; only C9orf72, SOD1 and TARDBP are used in the
-  manuscript, with a blank entry meaning non-carrier / negative screening.
-- `als_common.py` is the single source of truth for the 7 clustering
-  indicators, the cohort loader, phenotype naming/order/colors, and p-value
-  formatting — if any of these ever need to change, change them there, not
-  in the individual scripts.
